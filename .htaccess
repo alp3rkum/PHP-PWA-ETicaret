@@ -1,0 +1,12 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule \.(css|js|ico|png|jpg|jpeg|gif|svg|webp|ttf|woff|woff2|eot)$ - [L]
+
+# Diğer kurallar buraya gelecek
+
+# İndex sayfası
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^(.*)$ /index.php [L,QSA]

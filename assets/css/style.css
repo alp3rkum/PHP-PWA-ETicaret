@@ -1,0 +1,16 @@
+body {
+    overflow-x: hidden;
+}
+
+a, button, input {
+    transition-duration: 0.25s;
+}
+
+main {
+    min-height: calc(100vh);
+}
+/*Example media query*/
+@media (max-width: 575.98px)
+{
+
+}
