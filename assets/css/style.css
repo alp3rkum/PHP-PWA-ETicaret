@@ -8,6 +8,7 @@ a, button, input {
 
 main {
     min-height: calc(100vh);
+    padding-top: 120px;
 }
 /*Example media query*/
 @media (max-width: 575.98px)

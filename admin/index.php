@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     {
         $admin_adi = $_POST['admin_adi'];
         $admin_sifre = md5($_POST['admin_sifre']);
-        $admin_bilgi = $database->select("* FROM adminler WHERE kullanici_adi = '$admin_adi' AND sifre = '$admin_sifre'");
+        $admin_bilgi = $database->select("* FROM adminler WHERE admin_adi = '$admin_adi' AND admin_sifre = '$admin_sifre'");
         if(count($admin_bilgi) == 1)
         {
             $_SESSION['admin'] = $admin_adi;
@@ -130,10 +130,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                                     style="width: 100%; text-align: left; border: none; color: white; cursor: pointer;" onclick="window.location.href='/admin/sosyalmedya'">
                                 Sosyal Medya Linkleri
                             </button>
-                            <button class="d-block p-3 mt-2 rounded <?= $currentPath === '/admin/hizmetler' ? 'bg-gray-600 hover:bg-gray-600' : 'hover:bg-gray-700 active:bg-gray-600' ?> sidebar-button" 
-                                    style="width: 100%; text-align: left; border: none; color: white; cursor: pointer;" onclick="window.location.href='/admin/hizmetler'">
-                                Hizmetler
+                            <button class="toggleButton d-block p-3 rounded hover:bg-gray-700 active:bg-gray-600 sidebar-button mt-2"
+                            style="width: 100%; text-align: left; border: none; color: white; cursor: pointer;">
+                            Site İçerikleri
                             </button>
+                            <ul class="contentList px-3 space-y-3" style="max-height: 0; overflow: hidden; transition: max-height 0.5s ease;">
+                            <li><a href="/admin/slider" class="d-block p-3 mt-2 rounded <?= $currentPath === '/admin/slider' ? 'bg-gray-600 hover:bg-gray-600' : 'hover:bg-gray-700 active:bg-gray-600' ?> sidebar-button">Ana Sayfa Slideri</a></li>
+                            <li><a href="/admin/hakkinda" class="d-block p-3 rounded <?= $currentPath === '/admin/hakkinda' ? 'bg-gray-600 hover:bg-gray-600' : 'hover:bg-gray-700 active:bg-gray-600' ?> sidebar-button">Hakkında İçeriği</a></li>
+                            <li><a href="/admin/gizlilik" class="d-block p-3 mt-2 rounded <?= $currentPath === '/admin/gizlilik' ? 'bg-gray-600 hover:bg-gray-600' : 'hover:bg-gray-700 active:bg-gray-600' ?> sidebar-button">Gizlilik Politikası</a></li>
+                            <li><a href="/admin/uyeliksozlesme" class="d-block p-3 mt-2 rounded <?= $currentPath === '/admin/uyeliksozlesme' ? 'bg-gray-600 hover:bg-gray-600' : 'hover:bg-gray-700 active:bg-gray-600' ?> sidebar-button">Üyelik Sözleşmesi</a></li>
+                            <li><a href="/admin/mss" class="d-block p-3 mt-2 rounded <?= $currentPath === '/admin/mss' ? 'bg-gray-600 hover:bg-gray-600' : 'hover:bg-gray-700 active:bg-gray-600' ?> sidebar-button">Mesafeli Satış Sözleşmesi</a></li>
+                            </ul>
                             <button class="d-block p-3 mt-2 rounded <?= $currentPath === '/admin/iletisim' ? 'bg-gray-600 hover:bg-gray-600' : 'hover:bg-gray-700 active:bg-gray-600' ?> sidebar-button" 
                                     style="width: 100%; text-align: left; border: none; color: white; cursor: pointer;" onclick="window.location.href='/admin/iletisim'">
                                 İletişim Mesajları
@@ -168,6 +175,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                                 break;
                             case '/admin/iletisim':
                                 include 'iletisim.php';
+                                break;
+                            case '/admin/slider':
+                                include 'slider.php';
+                                break;
+                            case '/admin/gizlilik':
+                                include 'gizlilik.php';
+                                break;
+                            case '/admin/uyeliksozlesme':
+                                include 'uyeliksozlesme.php';
+                                break;
+                            case '/admin/mss':
+                                include 'mss.php';
                                 break;
                         }
                     ?>

@@ -4,7 +4,7 @@ class Database {
     private $conn;
     
     private function __construct() {
-        $this->conn = new mysqli('localhost:3307', 'root', '', '');
+        $this->conn = new mysqli('localhost:3307', 'root', '', 'ecommerce');
         $this->conn->set_charset('utf8mb4');
 
         if ($this->conn->connect_error) {
